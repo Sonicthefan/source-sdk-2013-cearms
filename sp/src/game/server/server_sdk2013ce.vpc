@@ -50,6 +50,7 @@ $Project "Server"
 
 		$Folder	"SDK2013CE DLL"
 		{
+			$File	"$SRCDIR\game\shared\sdk2013ce\handviewmodel_shared.cpp"
 		}
 
 		$Folder	"HL2 DLL"

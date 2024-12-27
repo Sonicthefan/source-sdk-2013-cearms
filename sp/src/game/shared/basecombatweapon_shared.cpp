@@ -1291,30 +1291,42 @@ bool CBaseCombatWeapon::UsesSecondaryAmmo( void )
 // Purpose: Show/hide weapon and corresponding view model if any
 // Input  : visible - 
 //-----------------------------------------------------------------------------
-void CBaseCombatWeapon::SetWeaponVisible( bool visible )
+void CBaseCombatWeapon::SetWeaponVisible(bool visible)
 {
-	CBaseViewModel *vm = NULL;
+	CBaseViewModel* vm = NULL;
+	CBaseViewModel* hm = NULL;
 
-	CBasePlayer *pOwner = ToBasePlayer( GetOwner() );
-	if ( pOwner )
+	CBasePlayer* pOwner = ToBasePlayer(GetOwner());
+	if (pOwner)
 	{
-		vm = pOwner->GetViewModel( m_nViewModelIndex );
+		vm = pOwner->GetViewModel();
+		hm = pOwner->GetViewModel(1);
 	}
 
-	if ( visible )
+	if (visible)
 	{
-		RemoveEffects( EF_NODRAW );
-		if ( vm )
+		RemoveEffects(EF_NODRAW);
+		if (vm)
 		{
-			vm->RemoveEffects( EF_NODRAW );
+			vm->RemoveEffects(EF_NODRAW);
+		}
+
+		if (hm)
+		{
+			hm->RemoveEffects(EF_NODRAW);
 		}
 	}
 	else
 	{
-		AddEffects( EF_NODRAW );
-		if ( vm )
+		AddEffects(EF_NODRAW);
+		if (vm)
 		{
-			vm->AddEffects( EF_NODRAW );
+			vm->AddEffects(EF_NODRAW);
+		}
+
+		if (hm)
+		{
+			hm->AddEffects(EF_NODRAW);
 		}
 	}
 }

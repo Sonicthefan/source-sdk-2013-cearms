@@ -1574,6 +1574,11 @@ void CBasePlayer::CalcView( Vector &eyeOrigin, QAngle &eyeAngles, float &zNear, 
 	{
 		CalcThirdPersonDeathView(eyeOrigin, eyeAngles, fov);
 	}
+
+	else if (!this->IsAlive())
+	{
+		CalcDeathCamView(eyeOrigin, eyeAngles, fov);
+	}
 #endif
 }
 
